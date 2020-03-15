@@ -26,14 +26,17 @@ fi
 # REQUIREMENTS
 
 cat >$requirements/base.txt <<EOF
+autopep8
 django<3
 pillow
 celery
 whitenoise
+djangorestframework
 EOF
 
 cat >$requirements/env_dev.txt <<EOF
 # Dependences for virtual environment
+
 -r base.txt
 psycopg2-binary
 ipython

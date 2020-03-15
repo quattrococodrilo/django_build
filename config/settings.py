@@ -35,6 +35,7 @@ LOCAL_APPS = []
 
 THIRDPARTY_APPS = [
     'django_extensions',
+    'rest_framework',
 ]
 
 # Application definition
@@ -133,3 +134,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
