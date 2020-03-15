@@ -25,7 +25,7 @@ SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = list(os.environ.get('ALLOWED_HOSTS'))
+ALLOWED_HOSTS = list(os.environ.get('ALLOWED_HOSTS').split(','))
 
 # Local apps
 
@@ -33,7 +33,9 @@ LOCAL_APPS = []
 
 # Thirdparty apps
 
-THIRDPARTY_APPS = []
+THIRDPARTY_APPS = [
+    'django_extensions',
+]
 
 # Application definition
 
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,6 +126,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
