@@ -120,7 +120,7 @@ services:
             - $environ/postgres.env
         depends_on:
             - db
-        command: python /project
+        command: python ./project/manage.py 0.0.0.0:8000
 EOF
 
 # PYTHON REQUIREMENTS
@@ -131,4 +131,5 @@ $pip install -r $requirements/env_dev.txt
 
 if [ ! -d project ]; then
     $python_path/django-admin startproject project
+    curl https://raw.githubusercontent.com/quattrococodrilo/django_build/master/config/settings.py -o ./project/project/settings.py
 fi
